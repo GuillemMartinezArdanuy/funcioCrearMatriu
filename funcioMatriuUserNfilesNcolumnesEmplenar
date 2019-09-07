@@ -1,0 +1,45 @@
+#Autor: Guillem Ardanuy Martínez
+#Exemple de com crear una matriu, amb les files i columnes que l'usuari vulgui,
+#per defecte la funcio emplenar, he pensat el algoritme per a que empleni la sequencia de 1 a nfiles*nColumnes
+#el codi es pot adaptar a les vostres necesitats
+#espero que sigui util :P ^^
+
+#NEVER SURRENDER! KEEP KODING!! ^^
+
+#-----------------------------CREEM UNA LLISTA QUE SERA EL NUMERO DE FILES-------------------#
+def creacioLlistaNfiles(nFilesMat=0):
+    nFilLlist=[] #per defecte llista sense files
+    nFilesMat
+    fila=None # els valors per defecte seran nulls, en python es diuen None
+    for i in range(nFilesMat): # en el rang de files que es volen
+        nFilLlist.insert(i,fila) # afegim a la llista cada fila amb el valor None
+    return nFilLlist #la funcio retorna una llista amb les files corresponents
+
+#-----------------------------CREEM UNA MATRIU DE X COLUMNES---------------------------------#
+def creacioMatriuNColumnesNFiles(nColMat=0,slist=[]):
+    nColMat=int(nColMat)
+    mtest2=[]
+    for i in range(nColMat):
+        mtest2.insert(i,slist[:]) # copiem la llista slist, aixi es nova.
+    return mtest2
+#------------------------------FI CREACIO DE MATRIU AMB X COLUMNES---------------------------#
+
+nFiles=int(input("quantes files vols?"))
+#print(creacioLlistaNfiles(nFiles))
+nColMat=int(input("quantes columnes vols que tingui la matriu?"))
+matriu=creacioMatriuNColumnesNFiles(nColMat,creacioLlistaNfiles(nFiles))[:]
+#print(matriu)
+
+print("la dimensio de la matriu es :{} x {}".format(nFiles,nColMat))
+
+def emplenarMatriu(indexColumna=0,indexFila=0,valorAfegir=0,matriu=creacioMatriuNColumnesNFiles(nColMat,creacioLlistaNfiles(nFiles))[:]):
+    matriu[indexColumna][indexFila]=valorAfegir
+    return matriu
+
+
+matriuEmplenada=[]
+for i in range(nColMat):
+    for j in range(nFiles):
+        matriuEmplenada=emplenarMatriu(i,j,((i+j)+(nFiles-1)*i)+1)
+print("l'estructura de la matriu: ",matriu)
+print("la matriu emplenada final es : ",matriuEmplenada)
